@@ -32,7 +32,7 @@ This is an H2
 -------------
 
 ### 字符效果和横线等
-                
+
 ----
 
 ~~删除线~~ <s>删除线（开启识别HTML标签时）</s>
@@ -87,7 +87,7 @@ GFM a-tail link @pandao  邮箱地址自动链接 test.test@gmail.com  www@vip.q
     <?php
         echo "Hello world!";
     ?>
-    
+
 预格式化文本：
 
     | First Header  | Second Header |
@@ -175,17 +175,17 @@ Image:
 [![](https://pandao.github.io/editor.md/examples/images/7.jpg)](https://pandao.github.io/editor.md/images/7.jpg "李健首张专辑《似水流年》封面")
 
 > 图为：李健首张专辑《似水流年》封面
-                
+
 ----
 
 ### 列表 Lists
 
 #### 无序列表（减号）Unordered Lists (-)
-                
+
 - 列表一
 - 列表二
 - 列表三
-     
+  
 #### 无序列表（星号）Unordered Lists (*)
 
 * 列表一
@@ -193,7 +193,7 @@ Image:
 * 列表三
 
 #### 无序列表（加号和嵌套）Unordered Lists (+)
-                
+
 + 列表一
 + 列表二
     + 列表二-1
@@ -205,7 +205,7 @@ Image:
     * 列表三
 
 #### 有序列表 Ordered Lists (-)
-                
+
 1. 第一行
 2. 第二行
 3. 第三行
@@ -223,7 +223,7 @@ Image:
     - [ ] GFM task list 4-2
                 
 ----
-                    
+
 ### 绘制表格 Tables
 
 | 项目        | 价格   |  数量  |
@@ -231,7 +231,7 @@ Image:
 | 计算机      | $1600   |   5     |
 | 手机        |   $12   |   12   |
 | 管线        |    $1    |  234  |
-                    
+
 First Header  | Second Header
 ------------- | -------------
 Content Cell  | Content Cell
@@ -258,7 +258,7 @@ Content Cell  | Content Cell
 | Computer  | $1600 |
 | Phone     |   $12 |
 | Pipe      |    $1 |
-                
+
 ----
 
 #### 特殊符号 HTML Entities Codes
@@ -285,7 +285,7 @@ X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
 - [ ] [ ]this is an incomplete item :fa-star: :fa-gear:;
     - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
     - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
- 
+
 #### 反斜杠 Escape
 
 \*literal asterisks\*
@@ -354,7 +354,7 @@ cond(no)->op
 [========]
                     
 ### 绘制序列图 Sequence Diagram
-                    
+
 ```seq
 Andrew->China: Says Hello 
 Note right of China: China thinks\nabout it 
