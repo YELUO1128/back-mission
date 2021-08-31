@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>博文</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/front_res/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template -->
+    <link href="/front_res/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <!-- Custom styles for this template -->
+    <link href="/front_res/css/clean-blog.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/editormd/css/editormd.preview.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="/editormd/css/style.css" type="text/css"/>-->
+    <style>
+        .editormd-html-preview {
+            font-size: 20px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav th:include="common/top_index"></nav>
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/front_res/img/book.jpeg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1 th:text="${blog.getTitle()}">博客文章标题</h1>
+                    <span class="meta" th:text="'发表于 ' + ${blog.getCreatetime()} + ' 分类：' + ${blog.getClassname()}">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div id="test-editormd-view">
+                    <textarea style="display:none;font-size: 40px" name="test-editormd-markdown-doc">###Hello world!</textarea>
+                </div>
+                <div id="test-editormd-view2">
+                    <textarea id="append-test" style="display:none;" th:text="${blog.getMkcontent()}"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</article>
+
+<hr>
+<!-- Pager -->
+<div>
+    <div class="clearfix">
+        <a class="btn btn-primary float-right" href="#">回到顶部 &rarr;</a>
+    </div>
+</div>
+
+
+<footer th:include="common/footer"></footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/front_res/vendor/jquery/jquery.min.js"></script>
+<script src="/front_res/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Custom scripts for this template -->
+<script src="/front_res/js/clean-blog.min.js"></script>
+
+<script src="/editormd/js/jquery.min.js"></script>
+
+<script src="/editormd/js/editormd.js"></script>
+<script src="/editormd/lib/marked.min.js"></script>
+<script src="/editormd/lib/prettify.min.js"></script>
+<script src="/editormd/lib/raphael.min.js"></script>
+<script src="/editormd/lib/underscore.min.js"></script>
+<script src="/editormd/lib/sequence-diagram.min.js"></script>
+<script src="/editormd/lib/flowchart.min.js"></script>
+<script src="/editormd/lib/jquery.flowchart.min.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        var testEditormdView,testEditormdView2;
+
+        // testEditormdView = editormd.markdownToHTML("test-editormd-view", {
+        //     // markdown        : markdown ,//+ "\r\n" + $("#append-test").text(),
+        //     //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
+        //     htmlDecode      : "style,script,iframe",  // you can filter tags decode
+        //     //toc             : false,
+        //     tocm            : true,    // Using [TOCM]
+        //     //tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
+        //     //gfm             : false,
+        //     //tocDropdown     : true,
+        //     // markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
+        //     emoji           : true,
+        //     taskList        : true,
+        //     tex             : true,  // 默认不解析
+        //     flowChart       : true,  // 默认不解析
+        //     sequenceDiagram : true  // 默认不解析
+        // });
+
+        testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
+            htmlDecode: "style,script,iframe",  // you can filter tags decode
+            emoji: true,
+            taskList: true,
+            tex: true,  // 默认不解析
+            flowChart: true,  // 默认不解析
+            sequenceDiagram: true  // 默认不解析
+        });
+    });
+</script>
+
+</body>
+</html>

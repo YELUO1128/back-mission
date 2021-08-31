@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="common/admin-header"></head>
+
+<body class="app sidebar-mini rtl">
+<div th:include="common/admin-sadbar"></div>
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-th-list"></i> 消息列表</h1>
+            <p>Table to display analytical data effectively</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">消息</li>
+            <li class="breadcrumb-item active"><a href="#">消息列表</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <table class="table table-hover table-bordered" style="white-space: nowrap" id="sampleTable">
+                        <thead>
+                        <tr>
+                            <th class="text-center">id</th>
+                            <th class="text-center">发送人</th>
+                            <th class="text-center">邮箱</th>
+                            <th class="text-center">手机号码</th>
+                            <th class="text-center">消息内容</th>
+                            <th class="text-center">发送时间</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="msg:${messages}">
+                            <td th:text="${msg.getMsgid()}" th:class="text-center">ID</td>
+                            <td th:text="${msg.getSender()}" th:class="text-center">发送人</td>
+                            <td th:text="${msg.getEmail()}" th:class="text-center">邮箱</td>
+                            <td th:text="${msg.getPhone()}" th:class="text-center">手机号码</td>
+                            <td th:text="${msg.getMessage()}">消息内容</td>
+                            <td th:text="${msg.getSendtime()}" th:class="text-center">发送时间</td>
+                            <td th:class="text-center">
+                                <a class="btn btn-sm btn-danger" th:href="'/admin/msg/del/' + ${msg.getMsgid()}" onclick="return confirm('消息将被删除，确认删除？');">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Essential javascripts for application to work-->
+<script src="/valires/js/jquery-3.2.1.min.js"></script>
+<script src="/valires/js/popper.min.js"></script>
+<script src="/valires/js/bootstrap.min.js"></script>
+<script src="/valires/js/main.js"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src="/valires/js/plugins/pace.min.js"></script>
+<script type="text/javascript" src="/valires/js/plugins/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/valires/js/plugins/sweetalert.min.js"></script>
+<!-- Data table plugin-->
+<script type="text/javascript" src="/valires/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/valires/js/plugins/dataTables.bootstrap.min.js"></script>
+
+<script type="text/javascript">$('#sampleTable').DataTable();</script>
+
+</body>
+</html>

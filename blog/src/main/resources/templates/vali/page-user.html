@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="description"
+          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <!-- Twitter meta-->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@pratikborsadiya">
+    <meta property="twitter:creator" content="@pratikborsadiya">
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vali Admin">
+    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:description"
+          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <title>User Profile - Vali Admin</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="/valires/css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body class="app sidebar-mini rtl">
+
+<header th:include="common/admin-sadbar"></header>
+
+<main class="app-content">
+    <div class="row user">
+        <div class="col-md-12">
+            <div class="profile">
+                <div class="info"><img class="user-img" src="/valires/img/my.jpg">
+                    <h4 th:text="${user.getUsername()}">John Doe</h4>
+                    <p>Test Developer</p>
+                </div>
+                <div class="cover-image"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="tile p-0">
+                <ul class="nav flex-column nav-tabs user-tabs">
+                    <li class="nav-item"><a class="nav-link active" href="#user-timeline" data-toggle="tab">随手记</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#user-settings" data-toggle="tab">设置</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#security-settings" data-toggle="tab">安全</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="tab-content">
+                <div class="tab-pane active" id="user-timeline">
+                    <div class="timeline-post">
+                        <div class="post-media"><a href="#"><img
+                                src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"></a>
+                            <div class="content">
+                                <h5><a href="#" th:text="${user.getUsername()}">John Doe</a></h5>
+                                <p class="text-muted">
+                                    <small>2 January at 9:30</small>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis tion ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum.</p>
+                        </div>
+                        <ul class="post-utility">
+                            <li class="likes"><a href="#"><i class="fa fa-fw fa-lg fa-thumbs-o-up"></i>Like</a></li>
+                            <li class="shares"><a href="#"><i class="fa fa-fw fa-lg fa-share"></i>Share</a></li>
+                            <li class="comments"><i class="fa fa-fw fa-lg fa-comment-o"></i> 5 Comments</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-post">
+                        <div class="post-media"><a href="#"><img
+                                src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"></a>
+                            <div class="content">
+                                <h5><a href="#">John Doe</a></h5>
+                                <p class="text-muted">
+                                    <small>2 January at 9:30</small>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis tion ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum.</p>
+                        </div>
+                        <ul class="post-utility">
+                            <li class="likes"><a href="#"><i class="fa fa-fw fa-lg fa-thumbs-o-up"></i>Like</a></li>
+                            <li class="shares"><a href="#"><i class="fa fa-fw fa-lg fa-share"></i>Share</a></li>
+                            <li class="comments"><i class="fa fa-fw fa-lg fa-comment-o"></i> 5 Comments</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="user-settings">
+                    <div class="tile user-settings">
+                        <h4 class="line-head">设置</h4>
+                        <form method="post" action="/admin/user/update" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>昵称</label>
+                                    <input name="username" class="form-control" type="text" th:placeholder="${user.getUsername()}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 mb-4">
+                                    <label>头像</label>
+                                    <input name="image" class="form-control" type="file">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-8 mb-4">
+                                    <label>手机号码</label>
+                                    <input  name="phone" class="form-control" type="text" th:placeholder="${user.getPhone()}">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-8 mb-4">
+                                    <label>年龄</label>
+                                    <input name="age" class="form-control" type="text" th:placeholder="${user.getAge()}">
+                                </div>
+                                <div>
+                                    <script async id="chevereto-pup-src" src="https://imgchr.com/sdk/pup.js" data-url="https://imgchr.com/upload" data-auto-insert="bbcode-embed-medium"></script>
+                                </div>
+
+                            </div>
+                            <div class="row mb-10">
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary" type="submit"><i
+                                            class="fa fa-fw fa-lg fa-check-circle"></i> 确定
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="security-settings">
+                    <div class="tile user-settings">
+                        <h4 class="line-head">重置密码</h4>
+                        <form id="resetpwd" method="post" action="/admin/user/pwdreset">
+                            <div class="row">
+                                <div class="col-md-8 mb-4">
+                                    <label>原密码</label>
+                                    <input name="pwd" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-md-8 mb-4">
+                                    <label>新密码</label>
+                                    <input name="newpwd" class="form-control" type="password">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-8 mb-4">
+                                    <label>确认密码</label>
+                                    <input  name="cpwd" class="form-control" type="text">
+                                </div>
+
+                            </div>
+                            <div class="row mb-10">
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary" type="submit"><i
+                                            class="fa fa-fw fa-lg fa-check-circle"></i> 确定
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Essential javascripts for application to work-->
+<script src="/valires/js/jquery-3.2.1.min.js"></script>
+<script src="/valires/js/popper.min.js"></script>
+<script src="/valires/js/bootstrap.min.js"></script>
+<script src="/valires/js/main.js"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src="/valires/js/plugins/pace.min.js"></script>
+
+<!-- Page specific javascripts-->
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dodo.mblog.mapper.MessageMapper">
+
+    <select id="findMsgById" parameterType="String" resultType="com.dodo.mblog.entity.Message">
+        select * from message where msgid = #{msgid}
+    </select>
+
+    <select id="findAllMsg" resultType="com.dodo.mblog.entity.Message">
+        select * from message order by sendtime desc
+    </select>
+
+
+    <insert id="insertMsg" parameterType="com.dodo.mblog.entity.Message">
+        INSERT INTO `blog`.`message` (sender, email, phone, message, sendtime)
+        VALUES
+        (#{sender},
+        #{email},
+        #{phone},
+        #{message},
+        #{sendtime})
+        <selectKey keyProperty="msgid" keyColumn="msgid" resultType="Integer" order="AFTER">
+        select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <delete id="deleteById" parameterType="Integer">
+        delete from message where msgid = #{msgid}
+    </delete>
+</mapper>

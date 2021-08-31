@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/admin-header"></head>
+<body class="app sidebar-mini rtl">
+
+<!--引用目录导航-->
+<div th:include="common/admin-sadbar"></div>
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-edit"></i> 编辑文章</h1>
+            <p> 编辑文章内容 ^_^ </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">博客</li>
+            <li class="breadcrumb-item"><a href="#">编辑文章</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <form method="post" action="/admin/blog/update" class="form-horizontal">
+
+                    <div class="form-group row" style="display: none">
+                        <label class="control-label col-md-2">文章id</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="id"
+                                   th:value="${blog.getId()}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-2">标题</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="title"
+                                   th:value="${blog.getTitle()}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-2">简介</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="summary"
+                                   th:value="${blog.getSummary()}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-2">类别</label>
+
+                        <div class="col-md-6">
+                            <select class="form-control col-md-6" id="article_class" name="classname">
+                            </select>
+                            <!--<input class="form-control col-md-6" type="text" placeholder="Enter the category" name="classid">-->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="editormd" id="test-editormd">
+                            <textarea class="editormd-markdown-textarea" name="mkcontent"
+                                      id="editora" th:text="${blog.getMkcontent()}"></textarea>
+                            <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+                            <textarea class="editormd-html-textarea" name="content" id="content"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="animated-checkbox">
+                            <label>
+                                <input type="checkbox" name="istop" value="1"><span class="label-text">文章置顶</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-2">上传图片</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="file">
+                        </div>
+                    </div>
+
+                    <div class="tile-footer">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-fw fa-lg fa-check-circle"></i>保存
+                                </button>&nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-secondary" href="/admin/blog"><i
+                                        class="fa fa-fw fa-lg fa-times-circle"></i>取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="clearix"></div>
+</main>
+
+
+<!-- Essential javascripts for application to work-->
+<script src="/valires/js/jquery-3.2.1.min.js"></script>
+<script src="/valires/js/popper.min.js"></script>
+<script src="/valires/js/bootstrap.min.js"></script>
+<script src="/valires/js/main.js"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src="/valires/js/plugins/pace.min.js"></script>
+<!-- Page specific javascripts-->
+
+<script src="/editormd/js/jquery.min.js"></script>
+<script src="/editormd/js/editormd.js"></script>
+
+<script type="text/javascript">
+    var testEditor;
+
+    $(function () {
+        testEditor = editormd("test-editormd", {
+            width: "90%",
+            height: 500,
+            syncScrolling: "single",
+            path: "/editormd/lib/",
+
+            //theme: "dark",
+            previewTheme: "dark",
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "/upload_file",
+            emoji: true,
+            taskList: true,
+            //toolbar  : false,             //关闭工具栏
+            //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
+            tocm: true,                  // Using [TOCM]
+            tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+            flowChart: true,             // 开启流程图支持，默认关闭
+            sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+            //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+            saveHTMLToTextarea: true
+        });
+    });
+</script>
+<script type="text/javascript">
+    function show_article_class() {
+        $.ajax({
+            url: "/ac", success: function (json) {
+                console.log(json);
+                for (var i = 0; i < json.length; i++) {
+                    $("#article_class").append("<option value='" + json[i]['classname'] + "'>" + json[i]['classname'] + "</option>");
+                }
+            }
+        });
+    }
+    show_article_class();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8"/>
+    <title>Simple example - Editor.md examples</title>
+    <link rel="stylesheet" href="/editormd/css/style.css"/>
+    <link rel="stylesheet" href="/editormd/css/editormd.css"/>
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="/valires/css/main.css">
+</head>
+<body>
+<div class="container">
+
+    <div>
+        <header>
+            <h1>文章编辑</h1>
+        </header>
+        <hr>
+
+        <form method="post" action="/admin/blog/add" class="form-horizontal">
+            <div class="form-group row">
+                <label class="control-label col-md-2">标题</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" placeholder="Enter the title" name="title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-2">简介</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" placeholder="Enter the summary" name="summary">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-2">类别</label>
+                <div class="col-md-6">
+                    <select class="form-control col-md-6" id="exampleSelect1" name="classid" >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="editormd" id="test-editormd">
+                    <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"
+                              id="editora"></textarea>
+                    <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+                    <textarea class="editormd-html-textarea" name="content" id="content"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+
+
+                <div class="animated-checkbox col-md-2">
+                    <label>
+                        <input type="checkbox" name="istop" value="1"><span class="label-text">文章置顶</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-2">上传图片</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="file">
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-primary"/>&nbsp;&nbsp;&nbsp;
+            <!--<button name="submitBtn" id="submitBtn" class="btn btn-danger" onclick="submitblog()">完成</button>-->
+        </form>
+    </div>
+</div>
+
+<br>
+<hr>
+
+<script src="/editormd/js/jquery.min.js"></script>
+<script src="/editormd/js/editormd.js"></script>
+
+<script type="text/javascript">
+    var testEditor;
+
+    $(function () {
+        testEditor = editormd("test-editormd", {
+            width: "98%",
+            height: 500,
+            syncScrolling: "single",
+            path: "/editormd/lib/",
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "/upload_file",
+            //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+            saveHTMLToTextarea: true
+        });
+    });
+</script>
+</body>
+</html>

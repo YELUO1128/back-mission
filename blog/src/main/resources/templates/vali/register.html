@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/admin-header"></head>
+<body onload="showMessage()">
+
+
+<section class="material-half-bg">
+
+
+    <div class="cover">
+    </div>
+</section>
+<section class="login-content">
+
+    <div class="logo">
+        <h1>Td-blog</h1>
+
+    </div>
+    <div class="login-box">
+        <form id="register" class="login-form" method="post" action="/user_regist">
+            <h5><i class="fa fa-lg fa-fw fa-user"></i>注册</h5>
+            <hr/>
+            <div class="form-group">
+                <label class="control-label">账号</label>
+                <input name="email" class="form-control" type="text" placeholder="Email" autofocus>
+            </div>
+            <div class="form-group">
+                <label class="control-label">密码</label>
+                <input name="pwd" class="form-control" type="password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">确认密码</label>
+                <input name="confirmpwd" class="form-control" type="password" placeholder="Confirm Password">
+            </div>
+
+            <div class="form-group btn-container">
+                <button class="btn btn-primary btn-sm btn-block" type="submit"><i class="fa fa-sign-in fa-lg fa-fw"></i>注册账号
+                </button>
+                <div class="float-right" type="float-right">
+                    <p class="semibold-text mb-2"><a href="/login">已注册，去登陆</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+
+<!-- Essential javascripts for application to work-->
+<script src="/valires/js/jquery-3.2.1.min.js"></script>
+<script src="/valires/js/popper.min.js"></script>
+<script src="/valires/js/bootstrap.min.js"></script>
+<script src="/valires/js/main.js"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src="/valires/js/plugins/pace.min.js"></script>
+
+<script type="text/javascript" src="/valires/js/plugins/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/valires/js/plugins/sweetalert.min.js"></script>
+<script type="text/javascript">
+    // Login Page Flipbox control
+    $('.login-content [data-toggle="flip"]').click(function () {
+        $('.login-box').toggleClass('flipped');
+        return false;
+    });
+</script>
+
+<script th:inline="javascript">
+    function showMessage() {
+        var msg = [[${msg}]];
+        for(var k in msg) {
+            //遍历对象，k即为key，obj[k]为当前k对应的值
+            if(k=='10001'){
+                console.log(k);
+                console.log(msg[k]);
+                notifyMsg(msg[k])
+            }
+        }
+    }
+
+    function notifyMsg(msg){
+        var notify =  $.notify({
+            // options
+            icon: 'glyphicon glyphicon-warning-sign',
+            title: '错误',
+            message: msg,
+            target: '_blank'
+        },{
+            // settings
+            element: 'body',
+            position: null,
+            type: "warning",
+            allow_dismiss: true,
+            newest_on_top: true,
+            showProgressbar: false,
+            placement: {
+                from: "top",
+                align: "center"
+            },
+            offset: 20,
+            spacing: 10,
+            z_index: 1031,
+            delay: 3000,
+            timer: 1000,
+            url_target: '_blank'
+        });
+
+        return notify;
+    }
+</script>
+
+<!--使用ajax提交表单，需要设置input type 为button-->
+<!--<script type="text/javascript">-->
+<!--function userlogin(){-->
+<!--var form = new FormData(document.getElementById("login"));-->
+<!--$.ajax({-->
+<!--url:"/user_login",-->
+<!--type:"post",-->
+<!--data:form,-->
+<!--processData:false,-->
+<!--contentType:false,-->
+<!--success:function(data){-->
+<!--location.href="/";-->
+<!--},-->
+<!--error:function(e){-->
+<!--alert("错误！！");-->
+<!--}-->
+<!--});-->
+<!--}-->
+<!--</script>-->
+
+</body>
+</html>

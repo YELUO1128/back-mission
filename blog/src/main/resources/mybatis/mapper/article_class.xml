@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dodo.mblog.mapper.ArticleClassMapper">
+
+    <select id="findById" parameterType="Integer" resultType="com.dodo.mblog.entity.ArticleClass">
+        select * from article_class where classid=#{classid}
+    </select>
+    
+    <select id="findByName" parameterType="String" resultType="com.dodo.mblog.entity.ArticleClass">
+        select * from article_class where classname=#{classname}
+    </select>
+
+    <select id="findArticleClasses" resultType="java.util.LinkedHashMap">
+        select * from article_class
+    </select>
+
+    <!--<select id="findDepts" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">-->
+        <!--SELECT *-->
+        <!--FROM emp, dept-->
+        <!--WHERE emp.deptno = dept.deptno-->
+        <!--&lt;!&ndash;多条件查询参数为空使用if判断，自动增删sql语句&ndash;&gt;-->
+        <!--<if test="dname !=null">-->
+            <!--AND dept.deptname = #{dname}-->
+        <!--</if>-->
+        <!--<if test="sal !=null">-->
+            <!--AND emp.sal > #{sal}-->
+        <!--</if>-->
+
+    <!--</select>-->
+
+    <!--<insert id="createEmp" parameterType="com.yftech.springbootmybatis.entity.Emp">-->
+        <!--INSERT INTO `emp` (-->
+            <!--`ename`,-->
+            <!--`job`,-->
+            <!--`mgr`,-->
+            <!--`hiredate`,-->
+            <!--`sal`,-->
+            <!--`comm`,-->
+            <!--`deptno`-->
+        <!--)-->
+        <!--VALUES(-->
+                <!--#{ename},-->
+                <!--#{job},-->
+                <!--#{mgr},-->
+                <!--#{hiredate},-->
+                <!--#{sal},-->
+                <!--#{comm},-->
+                <!--#{deptno}-->
+            <!--)-->
+
+        <!--<selectKey keyProperty="empno" keyColumn="empno" resultType="Integer" order="AFTER">-->
+            <!--select last_insert_id()-->
+        <!--</selectKey>-->
+    <!--</insert>-->
+
+    <!--<update id="updateEmp" parameterType="com.yftech.springbootmybatis.entity.Emp">-->
+        <!--UPDATE-->
+            <!--`scott`.`emp`-->
+        <!--SET-->
+            <!--`ename` = #{ename},-->
+            <!--`job` = #{job},-->
+            <!--`sal` = #{sal},-->
+            <!--`deptno` = #{deptno},-->
+            <!--`hiredate` = #{hiredate}-->
+        <!--WHERE `empno` = #{empno}-->
+    <!--</update>-->
+
+    <!--<delete id="deleteEmp" parameterType="Integer">-->
+        <!--delete from emp where empno = #{empno}-->
+    <!--</delete>-->
+</mapper>

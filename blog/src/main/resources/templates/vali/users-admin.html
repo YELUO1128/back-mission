@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="common/admin-header"></head>
+
+<body class="app sidebar-mini rtl">
+<div th:include="common/admin-sadbar"></div>
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-th-list"></i> 用户列表</h1>
+            <p>Table to display analytical data effectively</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active"><a href="/admin/users">用户列表</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <table class="table table-hover table-bordered" style="white-space: nowrap" id="sampleTable">
+                        <thead>
+                        <tr>
+                            <th th:class="text-center">账号</th>
+                            <th th:class="text-center">用户名</th>
+                            <th th:class="text-center">手机</th>
+                            <th th:class="text-center">年龄</th>
+                            <th th:class="text-center">注册时间</th>
+                            <th th:class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user:${users}">
+                            <td><a th:text="${user.getEmail()}">email</a></td>
+                            <td th:text="${user.getUsername()}" th:class="text-center">user name</td>
+                            <td th:text="${user.getPhone()}" th:class="text-center">phone</td>
+                            <td th:text="${user.getAge()}" th:class="text-center">age</td>
+                            <td th:text="${user.getRegtime()}" th:class="text-center">regedit time</td>
+                            <td th:class="text-center">
+                                <a class="btn btn-sm btn-danger" th:href="'/admin/user/del/' + ${user.getEmail()}"
+                                   onclick="return confirm('用户账号将被删除，确认删除？');">删除用户</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Essential javascripts for application to work-->
+<script src="/valires/js/jquery-3.2.1.min.js"></script>
+<script src="/valires/js/popper.min.js"></script>
+<script src="/valires/js/bootstrap.min.js"></script>
+<script src="/valires/js/main.js"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src="/valires/js/plugins/pace.min.js"></script>
+<script type="text/javascript" src="/valires/js/plugins/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/valires/js/plugins/sweetalert.min.js"></script>
+<!-- Data table plugin-->
+<script type="text/javascript" src="/valires/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/valires/js/plugins/dataTables.bootstrap.min.js"></script>
+
+<script type="text/javascript">$('#sampleTable').DataTable();</script>
+
+</body>
+</html>

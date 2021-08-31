@@ -1,0 +1,47 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    # 最大等待时间
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    # maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall
+    # 慢sql检测
+    connectionProperties: druid.stat.mergeSql:true;druid.stat.slowSqlMillis:500
+    useGlobalDataSourceStat: true
+
+  #thymeleaf 配置
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    suffix: .html
+    prefix: classpath:/templates/
+  # json 输出格式化
+  jackson:
+    serialization:
+      indent-output: true
+# mybatis 配置地址
+mybatis:
+  config-location: classpath:/mybatis/mybatis-config.xml
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+
+
+# 上传文件保存路径 建议用相对路径
+app:
+  config:
+    uploadPath: G:\blogPic\
+
+
+
+
+

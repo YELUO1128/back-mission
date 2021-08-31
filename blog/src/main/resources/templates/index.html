@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="common/header">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav th:include="common/top_index"></nav>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/front_res/img/timg.jpeg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h2>探索测试技术应用</h2>
+                    <h6>测试技术有效提升测试效率</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview" th:each="blog:${bloglist}">
+                <a th:href="'/blog/' + ${blog.getId()}">
+                    <h2 class="post-title" th:text="${blog.getTitle()}">
+                        test111
+                    </h2>
+                    <h4 class="post-subtitle" th:text="${blog.getSummary()}">
+                        Problems look mighty small from 150 miles up
+                    </h4>
+                </a>
+
+                <p class="post-meta" th:text="'发表于 '+ ${blog.getCreatetime()} + '---' + ${blog.getClassname()}"></p>
+                <hr>
+            </div>
+
+            <!-- Pager -->
+            <div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">回到顶部 &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<footer th:include="common/footer"></footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/front_res/vendor/jquery/jquery.min.js"></script>
+<script src="/front_res/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/front_res/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
