@@ -8,11 +8,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/24 18:27
- * @Description:
- */
+
 @Service
 public class ArticleClassService {
 
