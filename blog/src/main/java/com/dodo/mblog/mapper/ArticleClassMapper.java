@@ -5,11 +5,7 @@ import com.dodo.mblog.entity.ArticleClass;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/24 18:25
- * @Description:
- */
+
 
 
 public interface ArticleClassMapper {
