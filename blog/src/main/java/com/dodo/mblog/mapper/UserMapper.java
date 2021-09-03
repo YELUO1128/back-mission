@@ -4,11 +4,7 @@ import com.dodo.mblog.entity.User;
 
 import java.util.List;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/27 09:55
- * @Description:
- */
+
 public interface UserMapper {
 
     public User findById(Integer userid);   // 通过id查找
