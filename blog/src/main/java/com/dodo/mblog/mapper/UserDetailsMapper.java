@@ -5,11 +5,7 @@ import com.dodo.mblog.entity.UserDetails;
 
 import java.util.List;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/28 10:30
- * @Description:
- */
+
 public interface UserDetailsMapper {
 
     public UserDetails findByEmail(String email);
