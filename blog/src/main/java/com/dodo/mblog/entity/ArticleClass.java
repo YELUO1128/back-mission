@@ -1,10 +1,6 @@
 package com.dodo.mblog.entity;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/24 18:24
- * @Description:
- */
+
 public class ArticleClass {
 
     private Integer classid;
