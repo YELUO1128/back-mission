@@ -5,11 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.Resource;
 import java.util.Date;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/24 12:12
- * @Description: blog
- */
+
 
 
 public class Blog {
