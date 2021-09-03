@@ -10,11 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/27 09:55
- * @Description:
- */
+
 
 @Service
 public class UserService {
