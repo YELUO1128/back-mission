@@ -19,11 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/28 10:30
- * @Description:
- */
+
 
 @Service
 public class UserDetailsService {
