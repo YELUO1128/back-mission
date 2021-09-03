@@ -5,11 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/29 13:13
- * @Description:
- */
+
 public class Message {
 
 
