@@ -7,11 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/29 13:20
- * @Description:
- */
+
 
 @Service
 public class MessageService{
