@@ -6,11 +6,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/27 09:53
- * @Description:
- */
+
 
 
 public class User {
