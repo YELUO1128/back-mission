@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 /**
  * @Auther: Administrator
- * @Date: 2018/5/28 13:01
+
  * @Description: SHA加密工具
  */
 public class ShaEncrypt {
