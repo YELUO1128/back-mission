@@ -2,11 +2,7 @@ package com.dodo.mblog.entity;
 
 import java.util.Date;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/28 10:27
- * @Description: 用户详细信息表
- */
+
 public class UserDetails {
 
     private String email;
