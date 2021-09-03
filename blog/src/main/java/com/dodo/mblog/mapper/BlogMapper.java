@@ -4,11 +4,7 @@ import com.dodo.mblog.entity.Blog;
 
 import java.util.List;
 
-/**
- * @Auther: Administrator
- * @Date: 2018/5/24 13:31
- * @Description:
- */
+
 
 public interface BlogMapper {
 
